@@ -2,8 +2,7 @@
     color: teal;
 }
 
-
-#underscores{
+.main-container{
     border: solid blueviolet 3px;
     text-align: center;
     margin: 50px auto;
@@ -11,8 +10,24 @@
     height: 150px;
     width: 70%;
 }
+#remaining-guess-div{
+    border: solid rgb(181, 229, 240) 4px;
+    text-align: center;
+    margin: 50px auto;
+    height: 150px;
+    width: 70%;
+}
+
+#underscores{
+    border: solid rgb(181, 229, 240) 4px;
+    text-align: center;
+    margin: 50px auto;
+    font-size: 40px;
+    height: 150px;
+    width: 70%;
+}
 #right{
-    border: solid blueviolet 3px;
+    border: solid rgb(181, 229, 240) 4px;
     text-align: center;
     margin: 50px auto;
     height: 150px;
@@ -20,9 +35,9 @@
 }
 
 #wrong {
-    border: solid blueviolet 3px;
+    border: solid rgb(181, 229, 240) 4px;
     text-align: center;
     margin: 50px auto;
     height: 150px;
     width: 70%;
-}
+} 

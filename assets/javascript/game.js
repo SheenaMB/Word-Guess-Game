@@ -11,7 +11,7 @@ var rightWord = [];
 var wrongGuesses = [];
 var rightGuess = [];
 var underScore = [];
-var maxGuesses = 9;
+var maxGuesses;
 var usedLetters = [];
 var randomWord;
 var answers = [];
@@ -23,8 +23,9 @@ function start() {
     wrongGuesses = [];
     underScore = [];
     answers = [];
-
+    maxGuesses = 9;
     randomWord = words[Math.floor(Math.random() * words.length)].split('');
+    document.getElementById("number-guesses-remaining").textContent = maxGuesses-1;
     lettersRemaining = randomWord.length;
 
     for (var i = 0; i < randomWord.length; i++) {
@@ -69,18 +70,21 @@ document.onkeyup = function (event) {
     if (foundOne === false) {
         wrongGuesses.push(letterGuess);
         document.getElementById("wrongGuess").textContent = wrongGuesses.join(' ');
+        document.getElementById("number-guesses-remaining").textContent = maxGuesses-1;
+        console.log(lettersRemaining);
         console.log(wrongGuesses);
 
-        if (wrongGuesses.length === 9) {
+        if (--maxGuesses === 0) {
             alert('loser');
             start();
         }
-
+        
         return;
+     
     }
  
     console.log(lettersRemaining);
-
+    
     // // //checks to see if user word matches guesses
     if (lettersRemaining === 0) {
         setTimeout(function() {
@@ -90,6 +94,7 @@ document.onkeyup = function (event) {
       
     }
     // when done
+    
 }
 
 
