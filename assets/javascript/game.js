@@ -9,6 +9,7 @@ var words = ["rabbit", "banana", "monkey", "totoro", "black", "pen", "hat", "can
 
 var rightWord = [];
 var wrongGuesses = [];
+var rightGuess = [];
 var underScore = [];
 var maxGuesses = 9;
 var usedLetters = [];
@@ -50,7 +51,9 @@ document.onkeyup = function (event) {
     //trying to get it to go through the whole word and fill in ALL the same letters
     while ((index = randomWord.indexOf(letterGuess)) > -1) {
         //add to rightWords array
-        rightWord.push(letterGuess);
+        if(rightWord.indexOf(letterGuess) === -1) {
+            rightWord.push(letterGuess);
+        }
         answers[index] = letterGuess;
         randomWord[index] = '';
         document.getElementById("underscores").textContent = answers.join(' ');
@@ -59,9 +62,9 @@ document.onkeyup = function (event) {
         foundOne = true;
         // need to loop this function until index of length of array of randomWord 
     }
-
-    usedLetters.push(letterGuess);
-    document.getElementById("rightGuess").textContent = usedLetters.join(' ');
+    
+    // usedLetters.push(letterGuess);
+    document.getElementById("rightGuess").textContent = rightWord.join(' ');
 
     if (foundOne === false) {
         wrongGuesses.push(letterGuess);
