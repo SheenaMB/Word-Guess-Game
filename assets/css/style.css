@@ -1,0 +1,27 @@
+.jumbotron{
+    color: teal;
+}
+
+
+.underscores{
+    border: solid blueviolet 3px;
+    text-align: center;
+    margin: 50px auto;
+    height: 150px;
+    width: 70%;
+}
+.rightGuess{
+    border: solid blueviolet 3px;
+    text-align: center;
+    margin: 50px auto;
+    height: 150px;
+    width: 70%;
+}
+
+.wrongGuess {
+    border: solid blueviolet 3px;
+    text-align: center;
+    margin: 50px auto;
+    height: 150px;
+    width: 70%;
+}
