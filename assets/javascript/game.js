@@ -40,7 +40,7 @@ start();
 //get user's guess 
 document.onkeyup = function (event) {
     var letterGuess = event.key;
-    console.log(letterGuess);
+    // console.log(letterGuess);
 
 
     // "letterGuess" now holds the value of the letters guessed
@@ -65,25 +65,23 @@ document.onkeyup = function (event) {
     }
     
     // usedLetters.push(letterGuess);
-    document.getElementById("rightGuess").textContent = rightWord.join(' ');
+    // document.getElementById("rightGuess").textContent = rightWord.join(' ');
 
     if (foundOne === false) {
         wrongGuesses.push(letterGuess);
         document.getElementById("wrongGuess").textContent = wrongGuesses.join(' ');
         document.getElementById("number-guesses-remaining").textContent = maxGuesses-1;
-        console.log(lettersRemaining);
+        // console.log(lettersRemaining);
         console.log(wrongGuesses);
 
         if (--maxGuesses === 0) {
             alert('loser');
+            wrongGuesses =[];
             start();
         }
-        
         return;
      
     }
- 
-    console.log(lettersRemaining);
     
     // // //checks to see if user word matches guesses
     if (lettersRemaining === 0) {
@@ -97,19 +95,3 @@ document.onkeyup = function (event) {
     
 }
 
-
-
-//when keyUp(?) selected key is compared to letters in randomWord and
-
-    //IF letter is true or ===, that letter replaces the placeholder, and runs foo.join(' ')
-    //ELSE then placed under as letters already guessed.
-
-//Define number of max guesses.    
-
-    //If word is guessed before maxGuesses then .textContent YOU WIN! then game reset.
-
-    //If max guesses reached, then .textContext LOSER. Game reset. 
-
-
-
-    // var remainingLetters = randomWord.length;
