@@ -11,7 +11,7 @@
     height: 150px;
     width: 70%;
 }
-.rightGuess{
+#right{
     border: solid blueviolet 3px;
     text-align: center;
     margin: 50px auto;
@@ -19,7 +19,7 @@
     width: 70%;
 }
 
-.wrongGuess {
+#wrong {
     border: solid blueviolet 3px;
     text-align: center;
     margin: 50px auto;

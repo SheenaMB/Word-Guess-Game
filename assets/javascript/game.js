@@ -4,25 +4,30 @@
 //comp needs to pick random word 
 var words = ["rabbit", "banana", "monkey", "totoro", "black", "pen", "hat", "canteen"]
 
-randomWord = words[Math.floor(Math.random() * words.length)];
-
-console.log(randomWord);
 //create word list
 //and define other variable arrays.
 
 var rightWord = [];
-var wrongWord = [];
+var wrongGuesses = [];
 var underScore = [];
 var maxGuesses = 9;
+var usedLetters = [];
 var randomWord;
 var answers = [];
+var lettersRemaining;
 
-console.log(randomWord);
 
 function start() {
+    rightWord = [];
+    wrongGuesses = [];
+    underScore = [];
+    answers = [];
+
+    randomWord = words[Math.floor(Math.random() * words.length)].split('');
+    lettersRemaining = randomWord.length;
 
     for (var i = 0; i < randomWord.length; i++) {
-        //this loop counts the number of letters in the random word and pushes that specirif # of underscores to answers array.
+        //this loop counts the number of letters in the random word and pushes that specific # of underscores to answers array.
         answers.push("_");
     }
     //puts the 'answers' array into html by "joining" them.
@@ -35,43 +40,55 @@ document.onkeyup = function (event) {
     var letterGuess = event.key;
     console.log(letterGuess);
 
+
     // "letterGuess" now holds the value of the letters guessed
 
-//now index is a number that corresponds to the index of the guessed letter
-    var index = randomWord.indexOf(letterGuess);
-    if (index > -1) {
-      //add to rightWords array
+    //now index is a number that corresponds to the index of the guessed letter
+    var index; // = randomWord.indexOf(letterGuess);
+    var foundOne = false;
+
+    //trying to get it to go through the whole word and fill in ALL the same letters
+    while ((index = randomWord.indexOf(letterGuess)) > -1) {
+        //add to rightWords array
         rightWord.push(letterGuess);
         answers[index] = letterGuess;
+        randomWord[index] = '';
         document.getElementById("underscores").textContent = answers.join(' ');
-        // console.log(rightWord);
-        // //replace underscore with right letter
-        // underScore[chosenWord.indexof(letterGuess)] = letterGuess;
-        // document.getElementById("underscores").textContent;
-
-        // function myFunction() {
-        //     var x = document.getElementById("underscores").textContent;
-        //     document.getElementById("underscores").innerHTML = x;  
+        index = randomWord.indexOf(letterGuess);
+        lettersRemaining--;
+        foundOne = true;
+        // need to loop this function until index of length of array of randomWord 
     }
 
-    // //checks to see if user word matches guesses
-    // if(underScore.join('') === chosenWord); {
-    //     alert ('You Win');
+    usedLetters.push(letterGuess);
+    document.getElementById("rightGuess").textContent = usedLetters.join(' ');
 
-    // } 
-    // else {
-    //     //add to wrongWords array
-    //     wrongWord.push(wrongWord);
-    //     console.log(wrongWord);
-    // }
+    if (foundOne === false) {
+        wrongGuesses.push(letterGuess);
+        document.getElementById("wrongGuess").textContent = wrongGuesses.join(' ');
+        console.log(wrongGuesses);
+
+        if (wrongGuesses.length === 9) {
+            alert('loser');
+            start();
+        }
+
+        return;
+    }
+ 
+    console.log(lettersRemaining);
+
+    // // //checks to see if user word matches guesses
+    if (lettersRemaining === 0) {
+        setTimeout(function() {
+            alert('You Win');
+            start();
+        },100);
+      
+    }
+    // when done
 }
 
-
-//Check if guess is right
-
-
-//if right push to right array
-//if wrong push to wrong array
 
 
 //when keyUp(?) selected key is compared to letters in randomWord and
