@@ -11,6 +11,11 @@ var words = ["rabbit", "banana", "monkey", "totoro","black",""]
 //comp needs to pick random word 
 var randomWord = words[Math.floor(Math.random() * words.length)];
 console.log(randomWord);
+//and define other variable arrays.
+var rightWord = [];
+var wrongWord = [];
+var chosenWord = words[randomWord];
+var underScore = [];
 
 // assign that currentWord
 
@@ -22,7 +27,18 @@ for (var i = 0; i < randomWord.length; i++) {
 console.log(answers.join(' '))
 
 //get user's guess 
+document.onkeyup = function(event){
+    var letterGuess = event.key;
+    console.log(letterGuess);
+    if (randomWord.indexOf(letterGuess) > -1) {
+        console.log(true);
+    }
+} 
+// "letterGuess" now holds the value of the letters guessed
+
 //Check if guess is right
+
+
 //if right push to right array
 //if wrong push to wrong array
 
