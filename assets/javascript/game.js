@@ -1,40 +1,71 @@
 //create general page components
 // alert('Are you ready to play!?') ***
 //press any key to start
-
-
-//create word list
-
-var words = ["rabbit", "banana", "monkey", "totoro","black",""]
-
-     
 //comp needs to pick random word 
-var randomWord = words[Math.floor(Math.random() * words.length)];
+var words = ["rabbit", "banana", "monkey", "totoro", "black", "pen", "hat", "canteen"]
+
+randomWord = words[Math.floor(Math.random() * words.length)];
+
 console.log(randomWord);
+//create word list
 //and define other variable arrays.
+
 var rightWord = [];
 var wrongWord = [];
-var chosenWord = words[randomWord];
 var underScore = [];
-
-// assign that currentWord
-
-//display of letter placeholders = to the number of letters in word chosen
+var maxGuesses = 9;
+var randomWord;
 var answers = [];
-for (var i = 0; i < randomWord.length; i++) {
-    answers[i] = "_";
+
+console.log(randomWord);
+
+function start() {
+
+    for (var i = 0; i < randomWord.length; i++) {
+        //this loop counts the number of letters in the random word and pushes that specirif # of underscores to answers array.
+        answers.push("_");
+    }
+    //puts the 'answers' array into html by "joining" them.
+    document.getElementById("underscores").textContent = answers.join(' ');
 }
-console.log(answers.join(' '))
+start();
 
 //get user's guess 
-document.onkeyup = function(event){
+document.onkeyup = function (event) {
     var letterGuess = event.key;
     console.log(letterGuess);
-    if (randomWord.indexOf(letterGuess) > -1) {
-        console.log(true);
+
+    // "letterGuess" now holds the value of the letters guessed
+
+//now index is a number that corresponds to the index of the guessed letter
+    var index = randomWord.indexOf(letterGuess);
+    if (index > -1) {
+      //add to rightWords array
+        rightWord.push(letterGuess);
+        answers[index] = letterGuess;
+        document.getElementById("underscores").textContent = answers.join(' ');
+        // console.log(rightWord);
+        // //replace underscore with right letter
+        // underScore[chosenWord.indexof(letterGuess)] = letterGuess;
+        // document.getElementById("underscores").textContent;
+
+        // function myFunction() {
+        //     var x = document.getElementById("underscores").textContent;
+        //     document.getElementById("underscores").innerHTML = x;  
     }
-} 
-// "letterGuess" now holds the value of the letters guessed
+
+    // //checks to see if user word matches guesses
+    // if(underScore.join('') === chosenWord); {
+    //     alert ('You Win');
+
+    // } 
+    // else {
+    //     //add to wrongWords array
+    //     wrongWord.push(wrongWord);
+    //     console.log(wrongWord);
+    // }
+}
+
 
 //Check if guess is right
 
@@ -55,4 +86,5 @@ document.onkeyup = function(event){
     //If max guesses reached, then .textContext LOSER. Game reset. 
 
 
-    var remainingLetters = randomWord.length;
+
+    // var remainingLetters = randomWord.length;
